@@ -7,11 +7,11 @@
           <div class="ibox-content">
               <div class="row">
                   <div class="col-sm-3 b-r"><h3 class="m-t-none m-b">Nova Tarefa</h3>
-                      <form role="form">
-                          <div class="form-group"><input type="text" placeholder="Digite o título *" class="form-control"></div>
-                          <div class="form-group"><input type="text" placeholder="Descrição" class="form-control"></div>
+                      <form [formGroup]="form" novalidate>
+                          <div class="form-group"><input type="text" formControlName="titulo" placeholder="Digite o título *" class="form-control"></div>
+                          <div class="form-group"><input type="text" formControlName="descricao" placeholder="Descrição" class="form-control"></div>
                           <div>
-                              <button class="btn btn-sm btn-primary btn-outline pull-right m-t-n-xs" type="submit"><strong>Cadastrar</strong></button>
+                              <button class="btn btn-sm btn-primary btn-outline pull-right m-t-n-xs" type="button" (click)="cadastrar()"><strong>Cadastrar</strong></button>
                           </div>
                           <br>
                       </form>
@@ -32,16 +32,16 @@
                               </thead>
                               <tbody>
                                 <tr *ngFor="let item of tarefas">
-                                  <td>{{ item.id }}</td>
-                                  <td>{{ item.titulo }}</td>
-                                  <td>{{ item.descricao }}</td>
-                                  <td><span class="label label-{{ item.status === 1 ? 'success' : 'primary' }}">{{ item.status === 1 ? 'CONCLUÍDO' : ' A FAZER ' }}</span></td>
-                                  <td>{{ item.dataCriacao | date: 'd/M/y H:mm' }}</td>
-                                  <td>{{ item.dataAtualizacao | date: 'd/M/y H:mm' }}</td>
-                                  <td>
-                                    <button style="margin-right: 2px;" class="btn btn-info btn-sm"><i class="fa fa-paste"></i> Editar</button>
-                                    <button style="margin-right: 2px;" class="btn btn-primary btn-sm"><i class="fa fa-check"></i> Finalizar</button>
-                                    <button class="btn btn-danger btn-sm"><i class="fa fa-close"></i> Excluir</button>
+                                  <td *ngIf="item.statusRemocao !== 1">{{ item.id }}</td>
+                                  <td *ngIf="item.statusRemocao !== 1">{{ item.titulo }}</td>
+                                  <td *ngIf="item.statusRemocao !== 1">{{ item.descricao }}</td>
+                                  <td *ngIf="item.statusRemocao !== 1"><span class="label label-{{ item.status === 0 ? 'success' : 'primary' }}">{{ item.status === 0 ? 'CONCLUÍDO' : ' A FAZER ' }}</span></td>
+                                  <td *ngIf="item.statusRemocao !== 1">{{ item.dataCriacao | date: 'd/MM/y H:mm' }}</td>
+                                  <td *ngIf="item.statusRemocao !== 1">{{ item.dataAtualizacao | date: 'd/MM/y H:mm' }}</td>
+                                  <td *ngIf="item.statusRemocao !== 1">
+                                    <button *ngIf="item.status === 1" style="margin-right: 2px;" class="btn btn-info btn-sm" (click)="editar(item.id)"><i class="fa fa-paste"></i> Editar</button>
+                                    <button *ngIf="item.status === 1" style="margin-right: 2px;" class="btn btn-primary btn-sm" (click)="finalizar(item.id)" ><i class="fa fa-check"></i> Finalizar</button>
+                                    <button *ngIf="item.status !== 1" class="btn btn-danger btn-sm" (click)="excluir(item.id)"><i class="fa fa-close"></i> Excluir</button>
                                   </td>
                                 </tr>
                               </tbody>

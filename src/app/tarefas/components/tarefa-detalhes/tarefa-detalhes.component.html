@@ -2,26 +2,25 @@
   <div class="col-lg-12">
       <div class="ibox float-e-margins" id="wrapper">
           <div class="ibox-title">
-              <h5>Tarefas - 01</h5>
+              <h5>Tarefas - {{ idTarefa }}</h5>
           </div>
           <div class="ibox-content">
               <div class="row">
-                  <div class="col-sm-3 b-r"><h3 class="m-t-none m-b">Atualizando Tarefa</h3>
-                      <form role="form">
-                          <div class="form-group"><input type="text" placeholder="Digite o título *" class="form-control"></div>
-                          <div class="form-group"><input type="text" placeholder="Descrição" class="form-control"></div>
+                  <div class="col-sm-4 b-r"><h3 class="m-t-none m-b">Atualizar Tarefa</h3>
+                      <form [formGroup]="form" novalidate>
+                          <div class="form-group"><input type="text" formControlName="titulo" placeholder="Digite o título *" class="form-control"></div>
+                          <div class="form-group"><input type="text" formControlName="descricao" placeholder="Descrição" class="form-control"></div>
                           <div>
-                              <button class="btn btn-sm btn-primary btn-outline pull-right m-t-n-xs" type="submit"><strong>Atualizar</strong></button>
+                              <button class="btn btn-sm btn-primary btn-outline pull-right m-t-n-xs" type="button" (click)="atualizar()"><strong>Atualizar</strong></button>
                           </div>
                           <br>
                       </form>
                   </div>
-                    <div class="col-sm-9">
+                    <div class="col-sm-8">
                       <div class="table-responsive">
                           <table class="table table-striped">
                               <thead>
                               <tr>
-
                                   <th>Cód. </th>
                                   <th>Título </th>
                                   <th>Descrição</th>
@@ -32,43 +31,17 @@
                               </tr>
                               </thead>
                               <tbody>
-                                <tr>
-                                  <td>1</td>
-                                  <td>Tarefa 01</td>
-                                  <td>Comprar Leite</td>
-                                  <td><span class="label label-success">CONCLUÍDO</span></td>
-                                  <td>30/09/2020 13:00</td>
-                                  <td>30/09/2020 13:00</td>
-                                  <td>
-                                    <button style="margin-right: 2px;" class="btn btn-info btn-sm"><i class="fa fa-paste"></i> Editar</button>
-                                    <button style="margin-right: 2px;" class="btn btn-primary btn-sm"><i class="fa fa-check"></i> Finalizar</button>
-                                    <button class="btn btn-danger btn-sm"><i class="fa fa-close"></i> Excluir</button>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>2</td>
-                                  <td>Tarefa 01</td>
-                                  <td>Comprar Leite</td>
-                                  <td><span class="label label-primary"> A FAZER </span></td>
-                                  <td>30/09/2020 13:00</td>
-                                  <td>30/09/2020 13:00</td>
-                                  <td>
-                                    <button style="margin-right: 2px;" class="btn btn-info btn-sm"><i class="fa fa-paste"></i> Editar</button>
-                                    <button style="margin-right: 2px;" class="btn btn-primary btn-sm"><i class="fa fa-check"></i> Finalizar</button>
-                                    <button class="btn btn-danger btn-sm"><i class="fa fa-close"></i> Excluir</button>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>3</td>
-                                  <td>Tarefa 01</td>
-                                  <td>Comprar Leite</td>
-                                  <td><span class="label label-success">CONCLUÍDO</span></td>
-                                  <td>30/09/2020 13:00</td>
-                                  <td>30/09/2020 13:00</td>
-                                  <td>
-                                    <button style="margin-right: 2px;" class="btn btn-info btn-sm"><i class="fa fa-paste"></i> Editar</button>
-                                    <button style="margin-right: 2px;" class="btn btn-primary btn-sm"><i class="fa fa-check"></i> Finalizar</button>
-                                    <button class="btn btn-danger btn-sm"><i class="fa fa-close"></i> Excluir</button>
+                                <tr *ngFor="let item of tarefas">
+                                  <td *ngIf="item.statusRemocao !== 1">{{ item.id }}</td>
+                                  <td *ngIf="item.statusRemocao !== 1">{{ item.titulo }}</td>
+                                  <td *ngIf="item.statusRemocao !== 1">{{ item.descricao }}</td>
+                                  <td *ngIf="item.statusRemocao !== 1"><span class="label label-{{ item.status === 0 ? 'success' : 'primary' }}">{{ item.status === 0 ? 'CONCLUÍDO' : ' A FAZER ' }}</span></td>
+                                  <td *ngIf="item.statusRemocao !== 1">{{ item.dataCriacao | date: 'd/MM/y H:mm' }}</td>
+                                  <td *ngIf="item.statusRemocao !== 1">{{ item.dataAtualizacao | date: 'd/MM/y H:mm' }}</td>
+                                  <td *ngIf="item.statusRemocao !== 1">
+                                    <button *ngIf="item.status === 1" style="margin-right: 2px;" class="btn btn-info btn-sm" (click)="editar(item.id)"><i class="fa fa-paste"></i> Editar</button>
+                                    <button *ngIf="item.status === 1" style="margin-right: 2px;" class="btn btn-primary btn-sm" (click)="finalizar(item.id)" ><i class="fa fa-check"></i> Finalizar</button>
+                                    <button *ngIf="item.status !== 1" class="btn btn-danger btn-sm" (click)="excluir(item.id)"><i class="fa fa-close"></i> Excluir</button>
                                   </td>
                                 </tr>
                               </tbody>
