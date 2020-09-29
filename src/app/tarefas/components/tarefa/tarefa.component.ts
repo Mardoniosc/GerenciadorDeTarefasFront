@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TarefaService } from '../../services';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Tarefa } from '../../model'
+import * as uuid from 'uuid';
 
 @Component({
   selector: 'app-tarefa',
@@ -16,6 +17,8 @@ export class TarefaComponent implements OnInit {
 
   form: FormGroup
 
+  myId = uuid.v4();
+
   constructor(
     private tarefaService: TarefaService,
     private fb: FormBuilder,
@@ -26,6 +29,7 @@ export class TarefaComponent implements OnInit {
   ngOnInit(): void {
     this.gerarForm()
     this.carregaTarefas()
+    console.log(this.myId.substring(0,8));
   }
 
   gerarForm(){
