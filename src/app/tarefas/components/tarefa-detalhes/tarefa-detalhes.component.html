@@ -1,54 +1,83 @@
 <div class="row">
   <div class="col-lg-12">
-      <div class="ibox float-e-margins">
+      <div class="ibox float-e-margins" id="wrapper">
           <div class="ibox-title">
-              <h5>Detalhes Tarefa</h5>
+              <h5>Tarefas - 01</h5>
           </div>
           <div class="ibox-content">
-              <div class="table-responsive">
-                  <table class="table table-striped">
-                      <thead>
-                      <tr>
+              <div class="row">
+                  <div class="col-sm-3 b-r"><h3 class="m-t-none m-b">Atualizando Tarefa</h3>
+                      <form role="form">
+                          <div class="form-group"><input type="text" placeholder="Digite o título *" class="form-control"></div>
+                          <div class="form-group"><input type="text" placeholder="Descrição" class="form-control"></div>
+                          <div>
+                              <button class="btn btn-sm btn-primary btn-outline pull-right m-t-n-xs" type="submit"><strong>Atualizar</strong></button>
+                          </div>
+                          <br>
+                      </form>
+                  </div>
+                    <div class="col-sm-9">
+                      <div class="table-responsive">
+                          <table class="table table-striped">
+                              <thead>
+                              <tr>
 
-                          <th>Cód. </th>
-                          <th>Título </th>
-                          <th>Descrição</th>
-                          <th>Status </th>
-                          <th>Data Criação </th>
-                          <th>Data Atualização </th>
-                      </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>Tarefa 01</td>
-                          <td>Comprar Leite</td>
-                          <td><span class="label label-success">CONCLUÍDO</span></td>
-                          <td>30/09/2020 13:00</td>
-                          <td>30/09/2020 13:00</td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Tarefa 01</td>
-                          <td>Comprar Leite</td>
-                          <td><span class="label label-primary">CONCLUÍDO</span></td>
-                          <td>30/09/2020 13:00</td>
-                          <td>30/09/2020 13:00</td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Tarefa 01</td>
-                          <td>Comprar Leite</td>
-                          <td><span class="label label-secondary">CONCLUÍDO</span></td>
-                          <td>30/09/2020 13:00</td>
-                          <td>30/09/2020 13:00</td>
-                        </tr>
-                      </tbody>
-                  </table>
+                                  <th>Cód. </th>
+                                  <th>Título </th>
+                                  <th>Descrição</th>
+                                  <th>Status </th>
+                                  <th>Data Criação </th>
+                                  <th>Data Atualização </th>
+                                  <th>Ações</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>1</td>
+                                  <td>Tarefa 01</td>
+                                  <td>Comprar Leite</td>
+                                  <td><span class="label label-success">CONCLUÍDO</span></td>
+                                  <td>30/09/2020 13:00</td>
+                                  <td>30/09/2020 13:00</td>
+                                  <td>
+                                    <button style="margin-right: 2px;" class="btn btn-info btn-sm"><i class="fa fa-paste"></i> Editar</button>
+                                    <button style="margin-right: 2px;" class="btn btn-primary btn-sm"><i class="fa fa-check"></i> Finalizar</button>
+                                    <button class="btn btn-danger btn-sm"><i class="fa fa-close"></i> Excluir</button>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>2</td>
+                                  <td>Tarefa 01</td>
+                                  <td>Comprar Leite</td>
+                                  <td><span class="label label-primary"> A FAZER </span></td>
+                                  <td>30/09/2020 13:00</td>
+                                  <td>30/09/2020 13:00</td>
+                                  <td>
+                                    <button style="margin-right: 2px;" class="btn btn-info btn-sm"><i class="fa fa-paste"></i> Editar</button>
+                                    <button style="margin-right: 2px;" class="btn btn-primary btn-sm"><i class="fa fa-check"></i> Finalizar</button>
+                                    <button class="btn btn-danger btn-sm"><i class="fa fa-close"></i> Excluir</button>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>3</td>
+                                  <td>Tarefa 01</td>
+                                  <td>Comprar Leite</td>
+                                  <td><span class="label label-success">CONCLUÍDO</span></td>
+                                  <td>30/09/2020 13:00</td>
+                                  <td>30/09/2020 13:00</td>
+                                  <td>
+                                    <button style="margin-right: 2px;" class="btn btn-info btn-sm"><i class="fa fa-paste"></i> Editar</button>
+                                    <button style="margin-right: 2px;" class="btn btn-primary btn-sm"><i class="fa fa-check"></i> Finalizar</button>
+                                    <button class="btn btn-danger btn-sm"><i class="fa fa-close"></i> Excluir</button>
+                                  </td>
+                                </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+
               </div>
-
           </div>
       </div>
   </div>
-
 </div>
