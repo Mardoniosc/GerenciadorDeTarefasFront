@@ -1,10 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TarefaComponent, GerenciadorComponent } from './components';
+import {
+  TarefaComponent,
+  GerenciadorComponent,
+  TarefaDetalhesComponent
+} from './components';
 import { RouterModule } from '@angular/router'
 
 @NgModule({
-  declarations: [TarefaComponent, GerenciadorComponent],
+  declarations: [
+    TarefaComponent,
+    GerenciadorComponent,
+    TarefaDetalhesComponent
+  ],
   imports: [
     CommonModule,
     RouterModule

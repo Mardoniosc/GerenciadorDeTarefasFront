@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 
-import { GerenciadorComponent, TarefaComponent } from './components'
+import { GerenciadorComponent, TarefaComponent, TarefaDetalhesComponent } from './components'
 export const TarefaRoutes: Routes = [
   {
-    path: 'home',
+    path: 'tarefas',
     component: GerenciadorComponent,
     children:[
-      { path: '', component: TarefaComponent }
+      { path: '', component: TarefaComponent },
+      { path: 'detalhes/:id_tarefa', component: TarefaDetalhesComponent }
     ]
 }
 ]
